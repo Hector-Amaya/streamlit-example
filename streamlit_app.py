@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 # from sklearn.ensemble import IsolationForest
-import statistics
-import seaborn as sns
-from statsmodels.tsa.seasonal import seasonal_decompose
+# import statistics
+# import seaborn as sns
+# from statsmodels.tsa.seasonal import seasonal_decompose
 
 st.markdown(
     """
