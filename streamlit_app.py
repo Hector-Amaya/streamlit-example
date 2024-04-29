@@ -777,41 +777,40 @@ elif option == 'Análisis de Estacionariedad':
     estacionaria según los resultados de las pruebas.
     """)
 
-    #Aplicar prueba ADF con gráfica a la Serie Original
+    # Aplicar prueba ADF con gráfica a la Serie Original
     resultado_adf = adfuller(serie_temporal)
     st.write("Gráfica Original")
     st.write(f'ADF Statistic: {resultado_adf[0]}')
     st.write(f'p-value: {resultado_adf[1]}')
-    st.write(f'p-value: {resultado_adf[1]}')(f'Critical Values: {resultado_adf[4]}')
+    st.write(f'Critical Values: {resultado_adf[4]}')  # Aquí está la corrección
     
-    #Interpetar el resultado basado en el valor p
+    # Interpretar el resultado basado en el valor p
     if resultado_adf[1] < 0.05:
         st.write("La serie es estacionaria.")
     else:
         st.write("La serie no es estacionaria.")
     st.write("\n")
 
-    #Aplicar prueba ADF con gráfica a la Serie Transformada
+    # Aplicar prueba ADF con gráfica a la Serie Transformada
     resultado_adf = adfuller(diferencia)
     st.write("Gráfica Transformada")
     st.write(f'ADF Statistic: {resultado_adf[0]}')
     st.write(f'p-value: {resultado_adf[1]}')
-    st.write(f'Critical Values: {resultado_adf[4]}')
+    st.write(f'Critical Values: {resultado_adf[4]}')  # Aquí está la corrección
     
-    #Interpetar el resultado basado en el valor p
+    # Interpretar el resultado basado en el valor p
     if resultado_adf[1] < 0.05:
         st.write("La serie es estacionaria.")
     else:
         st.write("La serie no es estacionaria.")
-    
-    
-    #Visualizar la serie
+
+    # Visualizar la serie
     plt.figure(figsize=(12, 6))
     plt.plot(serie_temporal, label='Serie Original')
     plt.plot(diferencia, label='Serie Transformada', color='red')
     plt.title('Serie de Tiempo con Tendencia Lineal')
     plt.xlabel('Tiempo')
-    plt.ylabel('Tempertaura')
+    plt.ylabel('Temperatura')
     plt.ylim(-10, plt.ylim()[1])
     plt.legend()
     plt.grid(True)
