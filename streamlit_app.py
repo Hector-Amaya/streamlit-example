@@ -530,8 +530,8 @@ elif option == 'Anomalías':
     
     # Gráfico de transacciones y anomalías
     plt.figure(figsize=(15, 6))
-    plt.plot(df['Fecha'], df['Temperatura'], label='Temperatura')
-    plt.scatter(df.loc[df['Anomaly'], 'Fecha'], df.loc[df['Anomaly'], 'Temperatura'],
+    plt.plot(df['Fecha'].tolist(), df['Temperatura'].tolist(), label='Temperatura')
+    plt.scatter(df.loc[df['Anomaly'], 'Fecha'].tolist(), df.loc[df['Anomaly'], 'Temperatura'].tolist(),
                 color='red', label='Anomalía', marker='x', s=100)  # Marcar anomalías con una X roja
     plt.xlabel('Fecha')
     plt.ylabel('Cantidad de Temperatura')
@@ -540,7 +540,9 @@ elif option == 'Anomalías':
     plt.grid(True)
     
     # Mostrar el gráfico en Streamlit
-    st.pyplot(plt)
+    st.pyplot(plt)    
+    
+
     
 
 elif option == 'Análisis de Estacionariedad':
