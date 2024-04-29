@@ -680,4 +680,46 @@ elif option == 'Análisis de Estacionariedad':
     st.pyplot(fig)
     
 
+    st.markdown("""
+    #### Análisis de la Gráfica Original
+
+    Tanto en la primera gráfica, que es la original, como en la descomposición de la misma, 
+    que son las otras 3, podemos apreciar que cuenta con valores de temperatura muy variados, 
+    desde valores de 10°C hasta valores por encima de 30°C, lo que indica que por año en las 
+    diferentes estaciones la temperatura varia bastante en la ciudad.
+    
+    En cuanto a la tendencia, se puede apreciar que desde el año 2011 al 2019 hubo un 
+    aumento progresivo en la temperatura, el aumento numéricamente no es muy drástico, 
+    subió de una media de 22 a 26, pero como hablamos de temperatura, si se puede 
+    considerar como un aumento a tomar en consideración, y que sea una tendencia indica 
+    que en los próximos años la media de la temperatura seguirá subiendo.
+    
+    En cuanto a la estacionalidad, a simple vista se puede apreciar que si lleva un patrón 
+    muy similar al lo largo de los años, son mínimas las diferencias que presenta, 
+    esto índica que a lo largo de los años esos cambios de temperatura de ir bajando a 
+    10°C e ir subiendo a 30°C se han mantenido de manera muy uniforme.
+    """)
+
+    st.markdown("""
+    #### **2. Transformaciones:**
+
+    Aplica una transformación de diferenciación a la serie para intentar hacerla estacionaria. 
+    Grafica la serie original y la serie transformada en el mismo gráfico para compararlas.
+    """)
+
+    #Aplicar suavisado exponencial simple
+    alfa = 0.2 #Factor de suavizado
+    serie_suavizado = serie_temporal.ewm(alpha=alfa).mean()
+    
+    #Visualizar
+    plt.figure(figsize=(10, 5))
+    plt.plot(serie_temporal, label='Serie original')
+    plt.plot(serie_suavizado, label='Serie suavizada', color='red')
+    plt.title('Suavizado Exponencial Simple')
+    plt.xlabel('Fecha')
+    plt.ylabel('Temperatura')
+    plt.legend()
+    st.pyplot(plt)
+
+
 
