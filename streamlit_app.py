@@ -62,7 +62,7 @@ if option == 'Inicio':
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("<h4><b>Fecha de Entrega:</b> 28/04/2024</h4>", unsafe_allow_html=True)
+    st.markdown("<h4><b>Fecha de Entrega:</b> 29/04/2024</h4>", unsafe_allow_html=True)
 
 
 
