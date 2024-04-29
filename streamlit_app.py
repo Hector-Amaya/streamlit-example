@@ -546,6 +546,8 @@ elif option == 'Anomalías':
     df_anomalias = pd.DataFrame(df.loc[df['Anomaly']])
     st.write(df_anomalias)
 
+    st.write(df_anomalias['Temperatura'].describe())
+
     
 
 elif option == 'Análisis de Estacionariedad':
