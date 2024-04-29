@@ -6,6 +6,7 @@ from sklearn.ensemble import IsolationForest
 import statistics
 import seaborn as sns
 from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.tsa.stattools import adfuller
 import random
 
 st.markdown(
@@ -745,6 +746,31 @@ elif option == 'Análisis de Estacionariedad':
     plt.ylabel('Temperatura')
     plt.legend()
     st.pyplot(plt)
+
+
+    st.markdown("""
+    #### Análisis de la Diferenciación
+
+    En está gráfica al aplicar la diferenciación podemos observar como la gráfica se 
+    volvió una serie estacionaria, ya que de eso trata el método de diferenciación, 
+    ayuda a estabilizar la media de la serie removiendo cambios en el nivel. 
+    Por eso, es que vemos que se graficó en valores muy bajos, y que ya no tiene tendencia, 
+    de ningún tipo, la gráfica es meramente estacionaría y en ella podemos ver como a lo 
+    largo de los años los datos se mantienen de manera similar y uniforme, 
+    a simple vista sigue habiendo estacionalidad.
+    """)
+
+    st.markdown("""
+    #### **3. Pruebas de Estacionariedad:**
+
+    Realiza la prueba de Dickey-Fuller aumentada (ADF) para la serie original y la 
+    serie transformada. Interpreta los resultados de las pruebas. 
+    Explica si alguna de las series (original o transformada) puede considerarse 
+    estacionaria según los resultados de las pruebas.
+    """)
+
+
+
 
 
 
