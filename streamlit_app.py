@@ -235,18 +235,6 @@ elif option == 'Estadíticas descriptivas':
     y como a partir de la media la dispersión de los datos hacia la derecha y la izquierda es muy equitativa.
     """)
 
-    # Creamos el histograma
-    #plt.hist(salarios, bins=10, alpha=0.5, color='blue', edgecolor='black')
-    #plt.axvline(media, color='r', linestyle='-', label=f'Media: {media:.2f}')
-    #plt.axvline(mediana, color='b', linestyle='--', label=f'Mediana: {mediana:.2f}')
-    #plt.axvline(moda, color='g', linestyle='--', label=f'moda: {moda:.2f}')
-    #plt.title('Salarios de 250 empleados')
-    #plt.xlabel('Sueldos')
-    #plt.ylabel('Frecuencia')
-    #plt.grid()
-    #plt.legend()
-    #st.pyplot(plt)
-
     # Crear el histograma
     fig, ax = plt.subplots()
     ax.hist(salarios, bins=10, alpha=0.5, color='blue', edgecolor='black')
@@ -299,8 +287,56 @@ elif option == 'Estadíticas descriptivas':
 
 
 elif option == 'Patrones':
-    st.title('Ayuda')
-    st.write('¡Aquí puedes encontrar ayuda y soporte!')    
+    st.markdown("""
+    ## Problema de identificación de patrones en datos de ventas mensuales
+
+    En una empresa de venta al por menor, se ha recopilado un conjunto de datos que registra las ventas mensuales de 
+    varios productos durante un periodo de varios años. Tu tarea es analizar estos datos para identificar 
+    posibles patrones o tendencias en las ventas mensuales.
+    """)
+
+    st.markdown("""
+    ### **Parte 1: Generación de Datos**
+
+    Utiliza un programa en Python para generar datos simulados que representen las ventas mensuales de 
+    varios productos a lo largo de un período de tiempo. Los datos deben incluir al menos 3 productos 
+    diferentes y abarcar un periodo de al menos 3 años.
+    """)
+
+    # Definir los productos y el rango de fechas
+    productos = ['Xbox Series X', 'PlayStation 5', 'Nintendo Switch']
+    fechas = pd.date_range(start='1/1/2019', end='12/31/2021', freq='ME')
+
+    # Generar datos de ventas aleatorios para cada producto en cada mes
+    ventas = pd.DataFrame(index=fechas)
+    for producto in productos:
+        ventas[producto] = np.random.randint(50, 500, size=len(fechas))
+
+    st.write("Los datos de ventas mensuales son: ")
+    st.write(ventas)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    st.markdown("""
+    ### **Parte 2: Análisis de Datos**
+
+    Una vez que hayas generado los datos, realiza un análisis para identificar posibles 
+    patrones en las ventas mensuales. Algunas preguntas que podrías explorar incluyen:
+    - ¿Hay algún patrón estacional en las ventas de ciertos productos?
+    - ¿Se observa alguna tendencia de crecimiento o decrecimiento en las ventas a lo largo del tiempo?
+    - ¿Existen meses específicos en los que las ventas tienden a ser más altas o más bajas?
+    """)
+
+    ## Descomposición de la serie temporal
+    result = seasonal_decompose(ventas['Xbox Series X'], model='additive')
+    fig = result.plot()
+    fig.set_size_inches(10, 8) # Ajustar tamaño de la figura para mejor visualización
+
+    # Mostrar la figura en Streamlit
+    st.pyplot(fig)
+
+
+
 
 
 
