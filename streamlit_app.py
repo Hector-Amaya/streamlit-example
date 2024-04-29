@@ -660,7 +660,24 @@ elif option == 'Análisis de Estacionariedad':
     t = np.arange(120)
     data = 20 + 0.05 * t + 10 * np.sin(2 * np.pi * t / 12) + np.random.normal(size=120)
     serie_temporal = pd.Series(data, index=pd.date_range(start='2010-01-01', periods=120, freq='ME'))
-
+    st.write("Fecha y Temperatura:")
     st.write(serie_temporal)
+
+    st.markdown("""
+    ### **Actividades:**
+
+    #### **1. Visualización de la Serie Temporal:**
+
+    Grafica la serie temporal completa y determina visualmente si muestra estacionalidad, 
+    tendencia o ambas. Escribe tus observaciones
+    """)
+
+    # Descomposición Serie temporal
+    result = seasonal_decompose(serie_temporal, model='additive')
+    fig = result.plot()
+    fig.set_size_inches(10, 8) # Ajustar tamaño de la figura para mejor visualización
+    
+    st.pyplot(fig)
+    
 
 
