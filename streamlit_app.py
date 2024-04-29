@@ -631,7 +631,7 @@ elif option == 'Anomalías':
     plt.plot(df['Fecha'].tolist(), df['Temperatura'].tolist(), label='Temperatura')
     plt.scatter(df.loc[df['Anomaly'], 'Fecha'].tolist(), df.loc[df['Anomaly'], 'Temperatura'].tolist(),
                 color='red', label='Anomalía', marker='x', s=100)  # Marcar anomalías con una X roja
-    plt.plot(df['Fecha'], media_movil_un_lado, label='Media Móvil de un lado')
+    plt.plot(df['Fecha'].tolist(), media_movil_un_lado, label='Media Móvil de un lado')
     plt.xlabel('Fecha')
     plt.ylabel('Cantidad de Temperatura')
     plt.title('Temperaturas Diarias con Anomalía Detectada')
