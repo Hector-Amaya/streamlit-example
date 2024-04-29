@@ -503,6 +503,42 @@ elif option == 'Anomalías':
     # Mostrar el DataFrame
     st.write(df)
 
+    st.markdown("""
+    ### **Parte 2: Análisis de Datos**
+
+    
+    Una vez que hayas generado los datos, realiza un análisis para identificar posibles 
+    anomalías en las lecturas de temperatura. Algunas preguntas que podrías explorar incluyen:
+    
+    - ¿Existen lecturas de temperatura que se desvíen significativamente del rango 
+    esperado para esa área de la planta?
+    
+    - ¿Hay algún patrón o tendencia en las lecturas anómalas?
+    
+    - ¿Qué características tienen las lecturas anómalas en comparación 
+    con las lecturas normales?
+    """)
+
+    # Utilizar Isolation Forest para detectar anomalías
+    iso_forest = IsolationForest(contamination=0.02) # Suponemos que aproximadamente el 2% de los datos son anomalías
+    anomalies = iso_forest.fit_predict(df[['Temperatura']])
+    df['Anomaly'] = anomalies == -1
+    
+    # Gráfica de transacciones y anomalías
+    plt.figure(figsize=(15, 6))
+    plt.plot(df['Fecha'], df['Temperatura'],
+    label='Temperatura')
+    plt.scatter(df.loc[df['Anomaly'], 'Fecha'],
+    df.loc[df['Anomaly'],
+    'Temperatura'],
+    color='red', label='Anomalía', marker='x', s=100) # Marcar anomalías con una X roja
+    plt.xlabel('Fecha')
+    plt.ylabel('Cantidad de Temperatura')
+    plt.title('Temperaturas Diarias con Anomalía Detectada')
+    plt.legend()
+    
+    plt.grid(True)
+    st.pyplot()
 
 
 
