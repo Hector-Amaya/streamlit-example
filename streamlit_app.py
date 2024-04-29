@@ -412,6 +412,53 @@ elif option == 'Patrones':
     """)
 
 
+    
+    st.markdown("""
+    ### **Parte 3: Informe de Resultados**
+
+    Escribe un informe que resuma tus hallazgos. 
+    Incluye gráficos o visualizaciones que ayuden a ilustrar los patrones identificados 
+    en los datos. Además, discute cualquier insight o conclusión que hayas obtenido del 
+    análisis de los datos.
+    """)
+
+    st.markdown("""
+    #### **Informe**
+
+    Como se aprecia en las gráficas las ventas son normales, 
+    manteniendo periodos altos y bajos a lo largo de los 3 años, 
+    si acaso al PlayStation le fue mal los 5 primeros meses del 2021, 
+    la tendencia en los 3 productos es similar en cuanto a comportamiento, 
+    ya que empieza siendo alta, decrece bastante y luego vuelve a levantarse, 
+    eso demuestra que en los periodos de 2019 y 2021 las ventas fueron bastante bien, 
+    el problema surge en 2020 que es el tiempo donde la tendencia es muy baja, 
+    y aunque hay momentos donde intenta elevarse, no lo logra del todo hasta 2021.
+    
+    En cuanto a la estacionalidad, a pesar de que 2020 fue el año más duro según la tendencia, 
+    la estacionalidad en los tres productos se mantuvo uniforme y repetitiva. 
+    El residou en los tres producos se mantuvo pequeño, lo cual indica que la tendencia y 
+    estacionalidad fueron capturados correctamente.
+    """)
+
+    for producto in productos:
+        plt.figure(figsize=(10, 6))
+        plt.plot(ventas.index, ventas[producto], label=producto)
+        plt.title(f'Ventas mensuales de {producto}')
+        plt.xlabel('Fecha')
+        plt.ylabel('Ventas')
+        plt.legend()
+        plt.grid(True)
+        st.pyplot()
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(ventas.index, ventas)
+    plt.title(f'Ventas mensuales')
+    plt.xlabel('Fecha')
+    plt.ylabel('Ventas')
+    plt.legend(productos)
+    plt.grid(True)
+    st.pyplot()
+
 
 
 
