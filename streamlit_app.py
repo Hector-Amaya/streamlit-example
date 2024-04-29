@@ -614,8 +614,32 @@ elif option == 'Anomalías':
     # Calcular la media móvil de un lado
     media_movil_un_lado = df['Temperatura'].rolling(window=3, min_periods=1).mean()
     
-    st.write("Media Móvil de Un Lado:", media_movil_un_lado.tolist())
+    # st.write("Media Móvil de Un Lado:", media_movil_un_lado.tolist())
 
+
+    # Utilizar Isolation Forest para detectar anomalías
+    iso_forest = IsolationForest(contamination=0.02) # Suponemos que aproximadamente el 2% de los datos son anomalías
+    anomalies = iso_forest.fit_predict(df[['Temperatura']])
+    df['Anomaly'] = anomalies == -1
+    
+    # Interfaz de usuario
+    st.title("Detección de Anomalías en Temperaturas Diarias")
+    st.write("A continuación se muestra un gráfico de las temperaturas diarias con anomalías detectadas:")
+    
+    # Gráfico de transacciones y anomalías
+    plt.figure(figsize=(15, 6))
+    plt.plot(df['Fecha'].tolist(), df['Temperatura'].tolist(), label='Temperatura')
+    plt.scatter(df.loc[df['Anomaly'], 'Fecha'].tolist(), df.loc[df['Anomaly'], 'Temperatura'].tolist(),
+                color='red', label='Anomalía', marker='x', s=100)  # Marcar anomalías con una X roja
+    plt.plot(df['Fecha'], media_movil_un_lado, label='Media Móvil de un lado')
+    plt.xlabel('Fecha')
+    plt.ylabel('Cantidad de Temperatura')
+    plt.title('Temperaturas Diarias con Anomalía Detectada')
+    plt.legend()
+    plt.grid(True)
+    
+    # Mostrar el gráfico en Streamlit
+    st.pyplot(plt)  
 
     
 
