@@ -1,7 +1,5 @@
-python=3.11
-pip
 altair
 pandas
 streamlit
 matplotlib==3.5.1
-scikit-learn==0.24.2
+scikit-learn==0.24.3
