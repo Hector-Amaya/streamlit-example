@@ -441,14 +441,14 @@ elif option == 'Patrones':
     """)
 
     for producto in productos:
-        plt.figure(figsize=(10, 6))
-        plt.plot(ventas.index.tolist(), ventas[producto], label=producto)
-        plt.title(f'Ventas mensuales de {producto}')
-        plt.xlabel('Fecha')
-        plt.ylabel('Ventas')
-        plt.legend()
-        plt.grid(True)
-        st.pyplot()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(ventas.index, ventas[producto], label=producto)
+        ax.set_title(f'Ventas mensuales de {producto}')
+        ax.set_xlabel('Fecha')
+        ax.set_ylabel('Ventas')
+        ax.legend()
+        ax.grid(True)
+        st.pyplot(fig)
 
     plt.figure(figsize=(10, 6))
     plt.plot(ventas.index, ventas)
