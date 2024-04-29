@@ -541,7 +541,10 @@ elif option == 'Anomalías':
     
     # Mostrar el gráfico en Streamlit
     st.pyplot(plt)    
-    
+
+
+    df_anomalias = pd.DataFrame(df.loc[df['Anomaly']])
+    st.write(df_anomalias)
 
     
 
