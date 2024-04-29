@@ -609,7 +609,12 @@ elif option == 'Anomalías':
 
     #Media
     media = np.mean(df['Temperatura'])
-    st.write("La media de los salarios es: {:.2f}".format(media))
+    st.write("La media de la temperatura es: {:.2f}".format(media))
+
+    # Calcular la media móvil de un lado
+    media_movil_un_lado = df['Temperatura'].rolling(window=3, min_periods=1).mean()
+    
+    st.write("Media Móvil de Un Lado:", media_movil_un_lado.tolist())
 
 
     
