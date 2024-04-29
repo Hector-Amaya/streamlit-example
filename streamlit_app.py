@@ -623,7 +623,7 @@ elif option == 'Anomalías':
     df['Anomaly'] = anomalies == -1
     
     # Interfaz de usuario
-    st.title("Detección de Anomalías en Temperaturas Diarias")
+    st.title("Detección de Anomalías en Temperaturas Diarias con Media Movil de un Lado ")
     st.write("A continuación se muestra un gráfico de las temperaturas diarias con anomalías detectadas:")
     
     # Gráfico de transacciones y anomalías
