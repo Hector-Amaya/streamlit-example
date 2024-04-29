@@ -549,6 +549,65 @@ elif option == 'Anomalías':
     st.write("Información de las Temperaturas:")
     st.write(df_anomalias['Temperatura'].describe())
 
+
+    st.markdown("""
+    #### **Análisis**
+
+    Podemos ver en la gráfica que a lo largo de 4 meses las temperaturas más normales 
+    rondan entre 16 a 23 grados, por ende, los valores más alejados de ese rango pueden 
+    considerarse como anomalías. Se puede apreciar que si hay más valores que se alejan 
+    del rango, pero en la gráfica solo se contemplan como anomalías las que tienen una 'X'.
+    
+    Podemos apreciar que si hay lecturas que se desvian significativamente del rango esperado, 
+    en este caso son 58 las anomalías presentes en las gráficas, curiosamente a pesar de ser 
+    valores anómalos, como hay valores de temperaturas muy bajos y muy altos, 
+    lograron hacer una media de 19.2753 para los valores anómalos. 
+    El valor anómalo más bajo que se registró fue de 2.5466 grados y el valor más alto anómalo 
+    que se registró es 49.0574 grados.
+    
+    En cuanto a si hay un patrón o tendencia en los valores anómalos, 
+    por encima de la media de todos los datos la mayoría de valores anómalos se muestran 
+    entre 24 a 26, de ahí hay valores más altos que sobrepasan los 40 grados. 
+    Por debajo de la media la mayoría de valores ronda desde los 14 a los 10 grados, 
+    habiendo anomalías de hasta 2 grados.
+    """)
+
+    st.markdown("""
+    ### **Parte 3: Informe de Resultados**
+
+    Escribe un informe que resuma tus hallazgos. 
+    Incluye gráficos o visualizaciones que ayuden a identificar las anomalías en los datos 
+    de temperatura. Además, discute cualquier insight o conclusión que hayas obtenido del 
+    análisis de los datos y cómo podrían utilizarse para mejorar el mantenimiento preventivo o 
+    la eficiencia en la planta de manufactura.
+    """)
+
+    st.markdown("""
+    #### **Informe de Resultados**
+
+    Uno pensaría que todo el tiempo la temperatura en la planta está en orden, 
+    que sería una temperatura aproximada de 20 grados, pero gracias a este análisis y a está 
+    gráfica generada con el algoritmo Isolation Forest podemos apreciar que a lo largo del 
+    tiempo, en este caso 4 meses, hay anomalías en la temperatura, datos que están por 
+    debajo y por encima del rango de temperatura normal en la planta.
+    
+    Los datos anómalos registrados por debajo del rango normal, 
+    ronda de los 14 grados a los 2 grados; y los datos anómalos por encima del rango normal, 
+    ronda de los 24 a los 49 grados, estás anomalías son peligrosas ya que si la planta se 
+    debe de mantener en una cierta temperatura, el que existan temperaturas muy por debajo y 
+    muy por arriba puede provocar un problema en la línea de producción.
+    
+    #### Conclusión
+    
+    Estas anomlías en las temperaturas puede ser un gran riesgo para la línea de producción, 
+    por lo que al saber que existe este problema debemos de solucionarlo, 
+    y para eso, en vez de solo tener un aire acondicionado que lo pongas en 20 grados, 
+    podríamos hacer un Agente Inteligente que se encargue de recibir la temperatura del 
+    ambiente y si la temperatura empieza a salir del rango normal, que empiece a sacar más 
+    aire más frío para que se regule en la temperatura deseada.
+    """)
+
+
     
 
 elif option == 'Análisis de Estacionariedad':
