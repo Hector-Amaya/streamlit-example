@@ -451,7 +451,8 @@ elif option == 'Patrones':
         st.pyplot(fig)
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(ventas.index, ventas)
+    for producto in productos:
+        ax.plot(list(ventas.index), list(ventas[producto]), label=producto)
     ax.set_title('Ventas mensuales')
     ax.set_xlabel('Fecha')
     ax.set_ylabel('Ventas')
