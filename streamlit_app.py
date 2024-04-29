@@ -722,4 +722,29 @@ elif option == 'Análisis de Estacionariedad':
     st.pyplot(plt)
 
 
+    st.markdown("""
+    #### Análisis del Suavizado
+
+    Gracias al suavizado podemos reiterar que si existe una Tendencia y una Estacionalidad, 
+    ya que el suavizado se encarga de reducir el ruido en los datos graficados. 
+    Por ende, podemos apreciar que a pesar de que los datos empezaron un tanto arriba, 
+    estos bajaron y poco a poco empezaron a volver a subir, marcando una tendencia a la alza. 
+    También podemos apreciar que la forma graficada mantiene una forma muy similar y uniforme 
+    conoforme pasan los años, lo cuál indica que si hay estacionalidad.
+    """)
+
+    #Diferenciaciòn primera
+    diferencia = serie_temporal.diff().dropna()
+    
+    #Visualizar
+    plt.figure(figsize=(10, 5))
+    plt.plot(serie_temporal, label='Serie original')
+    plt.plot(diferencia, label='Serie diferenciada', color='red')
+    plt.title('Diferenciación primera')
+    plt.xlabel('Fecha')
+    plt.ylabel('Temperatura')
+    plt.legend()
+    st.pyplot(plt)
+
+
 
