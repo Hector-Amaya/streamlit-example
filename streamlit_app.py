@@ -524,23 +524,24 @@ elif option == 'Anomalías':
     anomalies = iso_forest.fit_predict(df[['Temperatura']])
     df['Anomaly'] = anomalies == -1
     
-    # Gráfica de transacciones y anomalías
+    # Interfaz de usuario
+    st.title("Detección de Anomalías en Temperaturas Diarias")
+    st.write("A continuación se muestra un gráfico de las temperaturas diarias con anomalías detectadas:")
+    
+    # Gráfico de transacciones y anomalías
     plt.figure(figsize=(15, 6))
-    plt.plot(df['Fecha'], df['Temperatura'],
-    label='Temperatura')
-    plt.scatter(df.loc[df['Anomaly'], 'Fecha'],
-    df.loc[df['Anomaly'],
-    'Temperatura'],
-    color='red', label='Anomalía', marker='x', s=100) # Marcar anomalías con una X roja
+    plt.plot(df['Fecha'], df['Temperatura'], label='Temperatura')
+    plt.scatter(df.loc[df['Anomaly'], 'Fecha'], df.loc[df['Anomaly'], 'Temperatura'],
+                color='red', label='Anomalía', marker='x', s=100)  # Marcar anomalías con una X roja
     plt.xlabel('Fecha')
     plt.ylabel('Cantidad de Temperatura')
     plt.title('Temperaturas Diarias con Anomalía Detectada')
     plt.legend()
-    
     plt.grid(True)
-    st.pyplot()
-
-
+    
+    # Mostrar el gráfico en Streamlit
+    st.pyplot(plt)
+    
 
 elif option == 'Análisis de Estacionariedad':
     st.title('Ayuda')
