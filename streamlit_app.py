@@ -777,6 +777,45 @@ elif option == 'Análisis de Estacionariedad':
     estacionaria según los resultados de las pruebas.
     """)
 
+    #Aplicar prueba ADF con gráfica a la Serie Original
+    resultado_adf = adfuller(serie_temporal)
+    print("Gráfica Original")
+    print(f'ADF Statistic: {resultado_adf[0]}')
+    print(f'p-value: {resultado_adf[1]}')
+    print(f'Critical Values: {resultado_adf[4]}')
+    
+    #Interpetar el resultado basado en el valor p
+    if resultado_adf[1] < 0.05:
+        print("La serie es estacionaria.")
+    else:
+        print("La serie no es estacionaria.")
+    print("\n")
+
+    #Aplicar prueba ADF con gráfica a la Serie Transformada
+    resultado_adf = adfuller(diferencia)
+    print("Gráfica Transformada")
+    print(f'ADF Statistic: {resultado_adf[0]}')
+    print(f'p-value: {resultado_adf[1]}')
+    print(f'Critical Values: {resultado_adf[4]}')
+    
+    #Interpetar el resultado basado en el valor p
+    if resultado_adf[1] < 0.05:
+        print("La serie es estacionaria.")
+    else:
+        print("La serie no es estacionaria.")
+    
+    
+    #Visualizar la serie
+    plt.figure(figsize=(12, 6))
+    plt.plot(serie_temporal, label='Serie Original')
+    plt.plot(diferencia, label='Serie Transformada', color='red')
+    plt.title('Serie de Tiempo con Tendencia Lineal')
+    plt.xlabel('Tiempo')
+    plt.ylabel('Tempertaura')
+    plt.ylim(-10, plt.ylim()[1])
+    plt.legend()
+    plt.grid(True)
+    st.pyplot(plt)
 
 
 
