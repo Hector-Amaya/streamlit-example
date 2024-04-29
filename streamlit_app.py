@@ -327,6 +327,9 @@ elif option == 'Patrones':
     - ¿Existen meses específicos en los que las ventas tienden a ser más altas o más bajas?
     """)
 
+    st.title("Análisis de Serie Temporal de Ventas del Xbox Series X")
+    st.write("A continuación, se muestra el descomposición estacional de las ventas del Xbox Series X.")
+
     ## Descomposición de la serie temporal
     result = seasonal_decompose(ventas['Xbox Series X'], model='additive')
     fig = result.plot()
@@ -335,6 +338,78 @@ elif option == 'Patrones':
     # Mostrar la figura en Streamlit
     st.pyplot(fig)
 
+    st.markdown("""
+    #### Análisis de las ventas del producto Xbox Series X
+
+    La primera gráfica muestra fluctuaciones a lo largo del tiempo con picos y valles. 
+    En la segunda, parece haber una tendencia general al alza hasta principios de 2021 
+    seguida por una ligera disminución. Esto podría indicar un crecimiento gradual en los 
+    datos relacionados con la Xbox Series X durante ese período.
+
+    La tercera gráfica parece indicar patrones estacionales con picos y caídas 
+    regulares que se repiten a lo largo del tiempo. Esto podría estar relacionado con 
+    eventos específicos, como lanzamientos de juegos o temporadas de vacaciones.
+
+    La cuarta gráfica muestra puntos dispersos que representan el residuo después de 
+    eliminar la tendencia y la estacionalidad. Estos puntos no muestran un patrón claro, 
+    lo cual es esperado en un componente residual. Puede haber factores no modelados o 
+    aleatorios que contribuyan a esta variabilidad.
+    """)
+
+    # Interfaz de usuario
+    st.title("Análisis de Serie Temporal de Ventas de PlayStation 5")
+    st.write("A continuación, se muestra el descomposición estacional de las ventas de PlayStation 5.")
+
+    # Descomposición estacional
+    result = seasonal_decompose(ventas['PlayStation 5'], model='additive')
+    fig, ax = plt.subplots()
+    fig.set_size_inches(10, 8)
+    result.plot(ax=ax)
+    st.pyplot(fig)
+
+    st.markdown("""
+    #### Análisis de las ventas del producto PlayStation 5
+
+    La primera gráfica muestra una serie temporal con fluctuaciones a lo largo del tiempo. 
+    En la segunda se observa una tendencia clara hacia abajo de mediados de 2020 en adelante. 
+    A mediados de 2021 se puede apreciar una alza en la tendencia.
+    
+    La tercera gráfica presenta un patrón repetitivo con picos y valles. 
+    Esto sugiere que hay una estacionalidad en los datos, es decir, ciertos patrones que 
+    se repiten en intervalos regulares.
+    
+    La cuarta gráfica muestra puntos dispersos alrededor del eje cero. 
+    Estos puntos representan las fluctuaciones aleatorias o el ruido en los datos después 
+    de haber eliminado la tendencia y la estacionalidad. No se observa un patrón claro en 
+    estos residuos.
+    """)
+
+    st.title("Análisis de Serie Temporal de Ventas de Nintendo Switch")
+    st.write("A continuación, se muestra el descomposición estacional de las ventas de Nintendo Switch.")
+    
+    # Descomposición estacional
+    result = seasonal_decompose(ventas['Nintendo Switch'], model='additive')
+    fig, ax = plt.subplots()
+    fig.set_size_inches(10, 8)
+    result.plot(ax=ax)
+    st.pyplot(fig)
+
+    st.markdown("""
+    #### Análisis de las ventas del producto Nintendo Switch
+
+    La primera gráfica muestra fluctuaciones en las ventas a lo largo del tiempo. 
+    En la segunda gráfica no se observa una tendencia clara ya que a mediados del 2019 a 
+    mediados de 2020 la tendencia iba a la alta, pero decreció por 4 meses, volvió a 
+    despuntar hacia arriba hasta que al final de 2020 fue decreciendo; a mediados de 2021 
+    empezó a aumentar.
+    
+    La tercera gráfica presenta un patrón repetitivo con picos y valles. 
+    Hay una estacionalidad en los datos de las ventas.
+    
+    La cuarta gráfica muestra puntos dispersos alrededor del eje cero. 
+    Estos puntos representan las fluctuaciones aleatorias o el ruido en los datos. 
+    No se observa un patrón claro en estos residuos.
+    """)
 
 
 
