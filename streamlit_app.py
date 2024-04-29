@@ -68,6 +68,8 @@ if option == 'Inicio':
 
 
 elif option == 'Estadíticas descriptivas':
+    st.title("Estadísticas Descriptivas")
+    
     st.markdown("""
     #### **Problema**
 
@@ -289,6 +291,8 @@ elif option == 'Estadíticas descriptivas':
 
 
 elif option == 'Patrones':
+    st.title("Patrones")
+    
     st.markdown("""
     ## Problema de identificación de patrones en datos de ventas mensuales
 
@@ -468,6 +472,8 @@ elif option == 'Patrones':
 
 
 elif option == 'Anomalías':
+    st.title("Anomalías")
+    
     st.markdown("""
     ## Problema para la detección de anomalías en sensores de temperatura en una planta de manufactura
 
@@ -645,6 +651,8 @@ elif option == 'Anomalías':
     
 
 elif option == 'Análisis de Estacionariedad':
+    st.title("Análisis de Estacionariedad")
+    
     st.markdown("""
     Se tiene un conjunto de datos que representa la temperatura media mensual de una 
     ciudad a lo largo de varios años. La serie de tiempo ha mostrado fluctuaciones que 
