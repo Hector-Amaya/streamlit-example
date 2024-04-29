@@ -6,6 +6,7 @@ from sklearn.ensemble import IsolationForest
 import statistics
 import seaborn as sns
 from statsmodels.tsa.seasonal import seasonal_decompose
+import random
 
 st.markdown(
     """
@@ -466,9 +467,41 @@ elif option == 'Patrones':
 
 
 elif option == 'Anomalías':
-    st.title('Ayuda')
-    st.write('¡Aquí puedes encontrar ayuda y soporte!')
+    st.markdown("""
+    ## Problema para la detección de anomalías en sensores de temperatura en una planta de manufactura
 
+    En una planta de manufactura, se utilizan sensores para monitorear la temperatura 
+    en diferentes partes de la línea de producción. Estos sensores registran lecturas de 
+    temperatura cada hora durante un periodo de varios meses. Tu tarea es analizar estos 
+    datos para identificar posibles anomalías en las lecturas de temperatura que puedan 
+    indicar problemas en el proceso de fabricación o fallos en los equipos.
+    """)
+
+    st.markdown("""
+    ### **Parte 1: Generación de Datos**
+
+    Utiliza un programa en Python para generar datos simulados que representen las lecturas 
+    de temperatura de los sensores durante varios meses. Los datos deben incluir una variedad 
+    de lecturas normales, así como algunas lecturas anómalas que simulen problemas en el 
+    proceso de fabricación o fallos en los equipos.
+    """)
+
+    # Definir el rango de fechas
+    fechas = pd.date_range(start='1/1/2021', end='05/01/2021', freq='H')
+    
+    # Generar lecturas de temperatura normales con una media de 20 y una desviación estándar de 2
+    temperaturas = np.random.normal(20, 2, size=len(fechas))
+    
+    # Añadir algunas lecturas anómalas
+    for i in range(len(temperaturas)):
+        if random.random() < 0.01:  # 1% de probabilidad de anomalía
+            temperaturas[i] += np.random.normal(0, 10)  # Añadir ruido con media 0 y desviación estándar 10
+    
+    # Crear un DataFrame de pandas con los datos
+    df = pd.DataFrame({'Fecha': fechas, 'Temperatura': temperaturas})
+    
+    # Mostrar el DataFrame
+    st.write(df)
 
 
 
