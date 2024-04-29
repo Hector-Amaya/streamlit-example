@@ -607,6 +607,10 @@ elif option == 'Anomalías':
     aire más frío para que se regule en la temperatura deseada.
     """)
 
+    #Media
+    media = np.mean(df['Temperatura'])
+    st.write("La media de los salarios es: {:.2f}".format(media))
+
 
     
 
