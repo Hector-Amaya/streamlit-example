@@ -644,5 +644,23 @@ elif option == 'Anomalías':
     
 
 elif option == 'Análisis de Estacionariedad':
-    st.title('Ayuda')
-    st.write('¡Aquí puedes encontrar ayuda y soporte!')
+    st.markdown("""
+    Se tiene un conjunto de datos que representa la temperatura media mensual de una 
+    ciudad a lo largo de varios años. La serie de tiempo ha mostrado fluctuaciones que 
+    podrían ser tanto estacionales como tendenciales.
+
+    **Datos:**
+    
+    Los datos se van a generar mediante el siguiente código en Python, 
+    que simula la temperatura media mensual en grados Celsius a lo largo de 10 años 
+    con una tendencia y estacionalidad anual:
+    """)
+
+    np.random.seed(0)
+    t = np.arange(120)
+    data = 20 + 0.05 * t + 10 * np.sin(2 * np.pi * t / 12) + np.random.normal(size=120)
+    serie_temporal = pd.Series(data, index=pd.date_range(start='2010-01-01', periods=120, freq='ME'))
+
+    st.write(serie_temporal)
+
+
