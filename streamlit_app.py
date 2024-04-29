@@ -817,6 +817,36 @@ elif option == 'Análisis de Estacionariedad':
     st.pyplot(plt)
 
 
+    st.markdown("""
+    #### Análisis de los resultados de la Prueba de Estacionariedad
 
+    En la Serie Original podemos apreciar como la conclusión de la Prueba indica que no es 
+    Estacionaria, esto crea conslicto, ya que a simple vista está Serie parece 
+    ser estacionaria, pero ya aplicando un análisis podemos darnos cuenta que existen 
+    parámetros que nosotros no vemos o no tomamos en cuenta a la hora de determinar si 
+    una serie es estacionaria o no.
+    
+    En la Serie Transformada podemos ver como la conclusión de la Prueba indica que la 
+    serie si es Estacionaria, esto solo refuerza la idea de que es mejor aplicar una 
+    Prueba a la hora de querer saber si una serie es Estacionaria o no.
+    """)
 
+    st.markdown("""
+    #### Conclusiones sobre la estacionariedad de la serie y la efectividad de las 
+    transformaciones aplicadas.
 
+    Concluyo que es muy importante aplicar pruebas a las series para saber si son 
+    estacionales o no, ya que aunque a simple vista todo indique que si es estacionaria hay 
+    parámetros que no tomamos en cuanta a la hora de hacer esa afirmación.
+    
+    De todos modos, este tipo de pruebas, o al menos está, me generó una duda, 
+    que no supe responder, se supone que a simple vista una gráfica es estacionaria 
+    si en el tiempo se mantiene de forma similar y uniforme, 
+    pero precisamente el usar el método de diferenciación hizo que la gráfica se 
+    adaptara única y exclusivamente para ser una gráfica estacionaria, 
+    donde sus valores iban de -10 a 10. 
+    Por ende, tengo la duda de si esa gráfica pasó la prueba porque se volvió una 
+    gráfica estacionaria, ninguna de las series normales son estacionarias, 
+    solo lo son si se adaptan para serlo. O si lo son, pero solo lo puedes saber si lo 
+    adaptas para que sea y lo pasa por una prueba.
+    """)
