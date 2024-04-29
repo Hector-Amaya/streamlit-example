@@ -442,7 +442,7 @@ elif option == 'Patrones':
 
     for producto in productos:
         plt.figure(figsize=(10, 6))
-        plt.plot(ventas.index, ventas[producto], label=producto)
+        plt.plot(ventas.index.tolist(), ventas[producto], label=producto)
         plt.title(f'Ventas mensuales de {producto}')
         plt.xlabel('Fecha')
         plt.ylabel('Ventas')
