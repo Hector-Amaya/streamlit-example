@@ -450,14 +450,17 @@ elif option == 'Patrones':
         ax.grid(True)
         st.pyplot(fig)
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(ventas.index, ventas)
-    plt.title(f'Ventas mensuales')
-    plt.xlabel('Fecha')
-    plt.ylabel('Ventas')
-    plt.legend(productos)
-    plt.grid(True)
-    st.pyplot()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for producto in productos:
+        ax.plot(ventas.index, ventas[producto], label=producto)
+    ax.set_title('Ventas mensuales')
+    ax.set_xlabel('Fecha')
+    ax.set_ylabel('Ventas')
+    ax.legend()
+    ax.grid(True)
+    
+    # Mostrar el gráfico en Streamlit
+    st.pyplot(fig)
 
 
 
