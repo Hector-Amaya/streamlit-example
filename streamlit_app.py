@@ -832,8 +832,7 @@ elif option == 'Análisis de Estacionariedad':
     """)
 
     st.markdown("""
-    #### Conclusiones sobre la estacionariedad de la serie y la efectividad de las 
-    transformaciones aplicadas.
+    #### Conclusiones sobre la estacionariedad de la serie y la efectividad de las transformaciones aplicadas.
 
     Concluyo que es muy importante aplicar pruebas a las series para saber si son 
     estacionales o no, ya que aunque a simple vista todo indique que si es estacionaria hay 
