@@ -362,9 +362,9 @@ elif option == 'Patrones':
 
     # Descomposición estacional
     result = seasonal_decompose(ventas['PlayStation 5'], model='additive')
-    fig, ax = plt.subplots()
+    fig = result.plot()
     fig.set_size_inches(10, 8)
-    result.plot(ax=ax)
+    
     st.pyplot(fig)
 
     st.markdown("""
@@ -389,9 +389,9 @@ elif option == 'Patrones':
     
     # Descomposición estacional
     result = seasonal_decompose(ventas['Nintendo Switch'], model='additive')
-    fig, ax = plt.subplots()
+    fig = result.plot()
     fig.set_size_inches(10, 8)
-    result.plot(ax=ax)
+    
     st.pyplot(fig)
 
     st.markdown("""
